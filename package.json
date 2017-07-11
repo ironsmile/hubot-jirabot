@@ -1,18 +1,18 @@
 {
-  "name": "hubot-jirabot",
+  "name": "hubot-jirabot-ng",
   "description": "A hubot script to fetch JIRA issues",
-  "version": "0.2.0",
-  "author": "Hasan Nizamani <hxnizamani@agiledigital.com.au>",
+  "version": "1.0.0",
+  "author": "Doychin Atanasov <ironsmile@gmail.com>",
   "keywords": [
     "hubot",
     "hubot-scripts"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/agiledigital/hubot-jirabot.git"
+    "url": "git://github.com/ironsmile/hubot-jirabot-ng.git"
   },
   "bugs": {
-    "url": "https://github.com/agiledigital/hubot-jirabot/issues"
+    "url": "https://github.com/ironsmile/hubot-jirabot-ng/issues"
   },
   "peerDependencies": {
     "hubot": "2.x"
