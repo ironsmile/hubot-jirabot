@@ -84,8 +84,8 @@ module.exports = (robot) ->
               json = JSON.parse(body)
               key = json.key
 
-              message = "[" + key + "] " + json.fields.summary
-              message += '\nStatus: '+json.fields.status.name
+              message = "[[" + key + "](" + jiraUrl + "/browse/" + key + ")] " + json.fields.summary
+              message += '\nStatus: _'+json.fields.status.name+'_'
 
               if (json.fields.assignee == null)
                 message += ', unassigned'
@@ -97,24 +97,9 @@ module.exports = (robot) ->
               else
                 message += ', unassigned'
               message += ", rep. by "+json.fields.reporter.displayName
-              if json.fields.fixVersions and json.fields.fixVersions.length > 0
-                message += ', fixVersions: '
-                index = 1
-                for fixVersion in json.fields.fixVersions
-                  if(index == json.fields.fixVersions.length)
-                    message += fixVersion.name
-                  else
-                    message += fixVersion.name + ', '
-                  index++
-              else
-                message += ', fixVersion: NONE'
 
               if json.fields.priority and json.fields.priority.name
                 message += ', priority: ' + json.fields.priority.name
-
-              urlRegex = new RegExp(jiraUrl + "[^\\s]*" + key)
-              if not msg.message.text.match(urlRegex)
-                message += "\n" + jiraUrl + "/browse/" + key
 
               msg.send message
               cache.push({issue: issue, expires: now + 120000, message: message})
