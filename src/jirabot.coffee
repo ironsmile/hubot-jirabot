@@ -49,13 +49,20 @@ module.exports = (robot) ->
 
     # used for filtering out duplicates
     alreadySent = []
+    ticketToMatch = {}
 
     for match in matchAllRegexp.execAll(msg.message.text)
       ticket = match[1].toUpperCase()
       if alreadySent.indexOf(ticket) != -1
         continue
       alreadySent.push(ticket)
-      msg.match = match
+      ticketToMatch[ticket] = match
+
+    # Make sure tickets are sent out in some logical order
+    alreadySent.sort()
+
+    for ticket in alreadySent
+      msg.match = ticketToMatch[ticket]
       getIssues(msg)
 
   getIssues = (msg) ->
