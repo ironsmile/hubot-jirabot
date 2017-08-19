@@ -1,3 +1,5 @@
+[![npm](https://badge.fury.io/js/hubot-jirabot-ng.svg)](https://www.npmjs.com/package/hubot-jirabot-ng)
+
 # hubot-jirabot-ng
 
 A hubot script to expand JIRA tickets from their keys. Whenever the bot hears something which
